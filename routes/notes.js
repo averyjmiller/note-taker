@@ -37,6 +37,7 @@ notes.post('/', (req, res) => {
   }
 });
 
+// DELETE Route for deleting a note
 notes.delete('/:id', (req, res) => {
   console.info(`${req.method} request received to ${req.method} note id ${req.params.id}`);
 
@@ -45,13 +46,16 @@ notes.delete('/:id', (req, res) => {
   readFromFile('./db/db.json')
   .then((data) => JSON.parse(data))
   .then((data) => {
-    const filteredArr = data.filter(item => item.id !== id);
-    writeToFile('./db/db.json', filteredArr);
-  })
-  .then(() => {
-    res.status(200).json(`Successfully deleted note`);
-    console.info(`Note with id ${id} has been deleted`);
-  });
+    const match = data.filter(item => item.id === id);
+    if(match.length > 0) {
+      const filteredArr = data.filter(item => item.id !== id);
+      writeToFile('./db/db.json', filteredArr);
+      res.status(200).json(`Successfully deleted note`);
+      console.info(`Note with id ${id} has been deleted`);  
+    } else {
+      res.status(400).json(`Error: could not find note with id ${id}`);
+      console.info(`No match found with the id ${id}`);
+    }});
 });
 
 module.exports = notes;
