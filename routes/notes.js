@@ -2,7 +2,7 @@ const notes = require('express').Router();
 
 const uuid = require('../helpers/uuid');
 
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, writeToFile , readAndAppend } = require('../helpers/fsUtils');
 
 // GET Route for retrieving all the notes
 notes.get('/', (req, res) => {
@@ -31,10 +31,27 @@ notes.post('/', (req, res) => {
       body: newNote,
     };
 
-    res.json(response);
+    res.status(200).json(response);
   } else {
-    res.json('Error in posting note');
+    res.status(400).json('Error: title and text are not present, could not post new note.');
   }
+});
+
+notes.delete('/:id', (req, res) => {
+  console.info(`${req.method} request received to ${req.method} note id ${req.params.id}`);
+
+  const { id } = req.params;
+
+  readFromFile('./db/db.json')
+  .then((data) => JSON.parse(data))
+  .then((data) => {
+    const filteredArr = data.filter(item => item.id !== id);
+    writeToFile('./db/db.json', filteredArr);
+  })
+  .then(() => {
+    res.status(200).json(`Successfully deleted note`);
+    console.info(`Note with id ${id} has been deleted`);
+  });
 });
 
 module.exports = notes;
