@@ -16,7 +16,7 @@ An application called Note Taker that can be used to write and save notes. This 
 - Run `npm i` to install Express as a dependency.
 
 ## Usage
-Run `node server.js` to run the application locally.
+Run `node server.js` in the terminal while inside the repository to run the application locally, or visit the deployed website [here](https://vast-bastion-14304-cbcb4d7d23c5.herokuapp.com/).
 
 ![image](https://github.com/averyjmiller/note-taker/assets/54604339/0dd46119-25cf-4117-aeff-6a777fb85c47)
 ![image](https://github.com/averyjmiller/note-taker/assets/54604339/33c85d3d-d0c5-43cc-9d61-50e9f0a30949)
