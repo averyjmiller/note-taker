@@ -19,8 +19,7 @@ An application called Note Taker that can be used to write and save notes. This 
 Run `node server.js` to run the application locally.
 
 ![image](https://github.com/averyjmiller/note-taker/assets/54604339/0dd46119-25cf-4117-aeff-6a777fb85c47)
-![image](https://github.com/averyjmiller/note-taker/assets/54604339/726ad0ad-e9bf-4175-983c-52de7ad9e992)
-![image](https://github.com/averyjmiller/note-taker/assets/54604339/b159364b-93ce-49db-91ac-76cdaa4e775d)
+![image](https://github.com/averyjmiller/note-taker/assets/54604339/33c85d3d-d0c5-43cc-9d61-50e9f0a30949)
 
 ## License
 This repository is covered under MIT License. For more information, check the `LICENSE` file.
